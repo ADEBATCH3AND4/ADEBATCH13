@@ -1,0 +1,118 @@
+{
+	"name": "pipeline8",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "dynamic_server_db_table_input",
+						"type": "DatasetReference",
+						"parameters": {
+							"serverName": {
+								"value": "@pipeline().parameters.inputServerName",
+								"type": "Expression"
+							},
+							"dbName": {
+								"value": "@pipeline().parameters.inputDBName",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@pipeline().parameters.inputTableName",
+								"type": "Expression"
+							},
+							"schemaName": {
+								"value": "@pipeline().parameters.inputschemaName",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "dynamic_server_db_table_input",
+						"type": "DatasetReference",
+						"parameters": {
+							"serverName": {
+								"value": "@pipeline().parameters.outputServerName",
+								"type": "Expression"
+							},
+							"dbName": {
+								"value": "@pipeline().parameters.outputDBName",
+								"type": "Expression"
+							},
+							"TableName": {
+								"value": "@pipeline().parameters.outputTablename",
+								"type": "Expression"
+							},
+							"schemaName": {
+								"value": "@pipeline().parameters.outputSchemaName",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"inputServerName": {
+				"type": "string"
+			},
+			"inputDBName": {
+				"type": "string"
+			},
+			"inputschemaName": {
+				"type": "string"
+			},
+			"inputTableName": {
+				"type": "string"
+			},
+			"outputServerName": {
+				"type": "string"
+			},
+			"outputDBName": {
+				"type": "string"
+			},
+			"outputSchemaName": {
+				"type": "string"
+			},
+			"outputTablename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2024-05-06T04:05:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

@@ -1,0 +1,28 @@
+{
+	"name": "trigger1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline7",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"input_Table": "TBL_1",
+					"output_Table": "TBL_2"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 15,
+				"startTime": "2024-05-06T04:03:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

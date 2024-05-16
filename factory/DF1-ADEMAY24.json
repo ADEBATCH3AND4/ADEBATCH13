@@ -1,0 +1,9 @@
+{
+	"name": "DF1-ADEMAY24",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "1c322fba-6f69-4cce-8458-bf8c9fb70e36",
+		"tenantId": "81bce5a7-e26a-4541-bad2-66e1c0b72f2d"
+	}
+}

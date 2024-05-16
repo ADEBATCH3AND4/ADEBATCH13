@@ -1,0 +1,24 @@
+{
+	"name": "Daily 9am",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Stopped",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Schedule_Trigger_WF",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Minute",
+				"interval": 1,
+				"startTime": "2024-05-14T02:54:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
