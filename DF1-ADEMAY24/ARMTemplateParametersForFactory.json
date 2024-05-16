@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "DF1-ADEMAY24"
+		},
+		"LS_BLOB_connectionString": {
+			"value": ""
+		},
+		"LS_DYNAMIC_SQL_connectionString": {
+			"value": ""
+		},
+		"LS_SQL_connectionString": {
+			"value": ""
+		},
+		"EventTrigger1_properties_typeProperties_scope": {
+			"value": "/subscriptions/7bfa60cc-5197-4f0b-9c9a-072399dceb47/resourceGroups/RG-ADEAPR24/providers/Microsoft.Storage/storageAccounts/stgadlsapr24"
+		},
+		"EventTrigger_Delete_properties_typeProperties_scope": {
+			"value": "/subscriptions/7bfa60cc-5197-4f0b-9c9a-072399dceb47/resourceGroups/RG-ADEAPR24/providers/Microsoft.Storage/storageAccounts/stgadlsapr24"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Window_Start_Date": {
+			"value": "@trigger().outputs.windowStartTime"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Window_End_Date": {
+			"value": "@trigger().outputs.windowEndTime"
+		},
+		"trigger1_properties_pipeline7_parameters_input_Table": {
+			"value": "TBL_1"
+		},
+		"trigger1_properties_pipeline7_parameters_output_Table": {
+			"value": "TBL_2"
+		},
+		"trigger2_properties_pipeline7_parameters_input_Table": {
+			"value": "TBL_3"
+		},
+		"trigger2_properties_pipeline7_parameters_output_Table": {
+			"value": "TBL_4"
+		}
+	}
+}

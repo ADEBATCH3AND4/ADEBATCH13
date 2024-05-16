@@ -1,0 +1,139 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "DF1-ADEMAY24"
+		},
+		"LS_BLOB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_BLOB'"
+		},
+		"LS_DYNAMIC_SQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_DYNAMIC_SQL'"
+		},
+		"LS_SQL_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_SQL'"
+		},
+		"EventTrigger1_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/7bfa60cc-5197-4f0b-9c9a-072399dceb47/resourceGroups/RG-ADEAPR24/providers/Microsoft.Storage/storageAccounts/stgadlsapr24"
+		},
+		"EventTrigger_Delete_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/7bfa60cc-5197-4f0b-9c9a-072399dceb47/resourceGroups/RG-ADEAPR24/providers/Microsoft.Storage/storageAccounts/stgadlsapr24"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Window_Start_Date": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowStartTime"
+		},
+		"Tumbling_Window_properties_pipeline_parameters_Window_End_Date": {
+			"type": "string",
+			"defaultValue": "@trigger().outputs.windowEndTime"
+		},
+		"trigger1_properties_pipeline7_parameters_input_Table": {
+			"type": "string",
+			"defaultValue": "TBL_1"
+		},
+		"trigger1_properties_pipeline7_parameters_output_Table": {
+			"type": "string",
+			"defaultValue": "TBL_2"
+		},
+		"trigger2_properties_pipeline7_parameters_input_Table": {
+			"type": "string",
+			"defaultValue": "TBL_3"
+		},
+		"trigger2_properties_pipeline7_parameters_output_Table": {
+			"type": "string",
+			"defaultValue": "TBL_4"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "DF1-ADEMAY24_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_BLOB_connectionString": {
+						"value": "[parameters('LS_BLOB_connectionString')]"
+					},
+					"LS_DYNAMIC_SQL_connectionString": {
+						"value": "[parameters('LS_DYNAMIC_SQL_connectionString')]"
+					},
+					"LS_SQL_connectionString": {
+						"value": "[parameters('LS_SQL_connectionString')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "DF1-ADEMAY24_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"EventTrigger1_properties_typeProperties_scope": {
+						"value": "[parameters('EventTrigger1_properties_typeProperties_scope')]"
+					},
+					"EventTrigger_Delete_properties_typeProperties_scope": {
+						"value": "[parameters('EventTrigger_Delete_properties_typeProperties_scope')]"
+					},
+					"Tumbling_Window_properties_pipeline_parameters_Window_Start_Date": {
+						"value": "[parameters('Tumbling_Window_properties_pipeline_parameters_Window_Start_Date')]"
+					},
+					"Tumbling_Window_properties_pipeline_parameters_Window_End_Date": {
+						"value": "[parameters('Tumbling_Window_properties_pipeline_parameters_Window_End_Date')]"
+					},
+					"trigger1_properties_pipeline7_parameters_input_Table": {
+						"value": "[parameters('trigger1_properties_pipeline7_parameters_input_Table')]"
+					},
+					"trigger1_properties_pipeline7_parameters_output_Table": {
+						"value": "[parameters('trigger1_properties_pipeline7_parameters_output_Table')]"
+					},
+					"trigger2_properties_pipeline7_parameters_input_Table": {
+						"value": "[parameters('trigger2_properties_pipeline7_parameters_input_Table')]"
+					},
+					"trigger2_properties_pipeline7_parameters_output_Table": {
+						"value": "[parameters('trigger2_properties_pipeline7_parameters_output_Table')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'DF1-ADEMAY24_ArmTemplate_0')]"
+			]
+		}
+	]
+}
