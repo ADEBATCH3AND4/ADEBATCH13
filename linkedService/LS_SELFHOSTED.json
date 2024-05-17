@@ -1,0 +1,16 @@
+{
+	"name": "LS_SELFHOSTED",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "integrated security=False;data source=DESKTOP-605GICH\\SQLEXPRESS;initial catalog=ADE_BATCH13;user id=anand",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwNmZjZjhjZi1hODQ0LTQ4ZTYtOGFjYS1iOTYzYmViNDIxMzAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "IR-SELFHOSTED",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
